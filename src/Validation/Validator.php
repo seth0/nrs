@@ -1,17 +1,13 @@
 <?php
 namespace Nrs\Validation;
-
 use Respect\Validation\Validator as Valid;
-
 class Validator
 {
     public function isValid($validation_data)
     {
         $errors = [];
-
         foreach ($validation_data as $name => $value) {
             $rules = explode("|", $value);
-
             foreach ($rules as $rule) {
                 $exploded = explode(":", $rule);
 
@@ -35,10 +31,11 @@ class Validator
                 }
                 break;
 
-            default:
-          }
+                default:
+                    $errors[] = "No value found!";
             }
         }
-        return $errors;
     }
+    return $errors;
+}
 }
