@@ -1,0 +1,3 @@
+-- BaseController.php
+$this->Blade = new BladeInstance("/opt/lampp/htdocs/views", "/opt/lampp/htdocs/cache/views");
+NEEDS CHANGES
