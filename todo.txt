@@ -14,6 +14,7 @@ Login Page
 About/Blog/Info Page
 	-- Some info page
 	-- Display info from Database
+	-- display page from database
 
 Testimonials page
 	-- Display Customer Guastbook
