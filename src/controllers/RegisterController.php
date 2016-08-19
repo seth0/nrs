@@ -1,7 +1,12 @@
 <?php
+/*
+
+The Register
+
+*/
 namespace Nrs\controllers;
 
-use Nrs\Models\User;
+use Nrs\models\User;
 use Nrs\Validation\Validator;
 use duncan3dc\Laravel\BladeInstance;
 
@@ -54,11 +59,8 @@ class RegisterController extends BaseController
         $user->password         = password_hash($_REQUEST['password'], PASSWORD_DEFAULT);
         $user->save();
 
-        echo "Posted!";
+        header("Location: /success");
+        exit();
     }
 
-    public function getShowLoginPage()
-    {
-        echo $this->Blade->render("login");
-    }
 }
