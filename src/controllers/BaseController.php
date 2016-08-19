@@ -1,4 +1,10 @@
 <?php
+/*
+
+The BaseController is used as bases for our page controller, that show the homepage the 404 page. And that's al
+it really does
+
+*/
 namespace Nrs\controllers;
 
 use duncan3dc\Laravel\BladeInstance;
@@ -13,18 +19,3 @@ class BaseController
       $this->Blade = new BladeInstance("/opt/lampp/htdocs/views", "/opt/lampp/htdocs/cache/views");
     }
 }
-
-
-
-// -> OLD TWIG
-
-/*  protected $loader;
-  protected $twig;
-
-  public function __construct()
-  {
-      $this->loader = new \Twig_Loader_Filesystem(__DIR__ . "/../../views");
-      $this->twig   = new \Twig_Environment($this->loader,[
-        'cache' => false, 'debug' => true
-      ]);
-  } */

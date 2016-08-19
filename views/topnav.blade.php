@@ -14,7 +14,11 @@
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/register">Register</a></li>
                 <li><a href="/about">About us</a></li>
+                @if(Nrs\auth\LoggedIn::User())
+                <li><a href="/logout">Logout</a></li>
+                @else
                 <li><a href="/login">Login</a></li>
+                @endif
             </ul>
         </div>
         <!--/.nav-collapse -->

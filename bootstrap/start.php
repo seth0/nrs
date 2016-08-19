@@ -1,8 +1,9 @@
 <?php
-session_start();
-
 // Composer.json
 require(__DIR__ . "/../vendor/autoload.php");
+
+session_start();
+
 
 // Correct error handling.
 $whoops = new \Whoops\Run;
