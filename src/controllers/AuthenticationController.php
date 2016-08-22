@@ -39,6 +39,10 @@ class AuthenticationController extends BaseController
         $okay = false;
       }
       // if valid LOGIN them in
+      if ($user->active == 0) {
+        $okay = false;
+      }
+
       if ($okay) {
         $_SESSION['user'] = $user;
         header("Location: /");
@@ -58,10 +62,5 @@ class AuthenticationController extends BaseController
         session_destroy();
         header("Location: /login");
         exit();
-    }
-
-    public function getTestUser()
-    {
-      dd(LoggedIn::user()->first_name);
     }
 }
