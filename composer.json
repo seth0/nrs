@@ -16,7 +16,10 @@
         "robmorgan/phinx": "^0.6.4",
         "symfony/var-dumper": "^3.1",
         "cocur/slugify": "^2.3",
-        "swiftmailer/swiftmailer": "^5.4"
+        "phpunit/phpunit": "^5.5",
+        "swiftmailer/swiftmailer": "^5.4",
+        "kunststube/csrfp": "^0.1.0"
+
     },
     "autoload": {
       "psr-4": { "Nrs\\": "src/" }

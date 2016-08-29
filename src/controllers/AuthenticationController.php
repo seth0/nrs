@@ -14,53 +14,61 @@ use Nrs\auth\LoggedIn;
 class AuthenticationController extends BaseController
 {
 
+    /**
+     * Shows the login Page
+     * @return html
+     */
     public function getShowLoginPage()
     {
-        echo $this->Blade->render("login");
+        echo $this->Blade->render("login", [
+          'signer' => $this->signer,
+        ]);
     }
 
     public function postShowLoginPage()
-    {
+  {
+      if (!$this->signer->validateSignature($_POST['_token'])) {
+          header('HTTP/1.0 400 Bad Request');
+          exit;
+      }
       $okay = true;
       $email = $_REQUEST['email'];
       $password = $_REQUEST['password'];
-
-      // Look up to the user
+      //look up the user
       $user = User::where('email', '=', $email)
-                 ->first();
-
+          ->first();
       if ($user != null) {
-        // validate the data
-        if (! password_verify($password, $user->password))
-        {
-            $okay = false;
-        }
+          // validate credentials
+          if (! password_verify($password, $user->password)) {
+              $okay = false;
+          }
+
       } else {
-        $okay = false;
+          $okay = false;
       }
-      // if valid LOGIN them in
-      if ($user->active == 0) {
-        $okay = false;
+
+      if ($user->active == 0){
+          $okay = false;
       }
 
       if ($okay) {
-        $_SESSION['user'] = $user;
-        header("Location: /");
-        exit();
+          $_SESSION['user'] = $user;
+          header("Location: /");
+          exit();
       } else {
-        $_SESSION['msg'] = ["Invalid Login!"];
-        echo $this->Blade->render('login');
-        unset($_SESSION['msg']);
-        exit();
+          $_SESSION['msg'] = ["Invalid login!"];
+          echo $this->blade->render("login", [
+              'signer' => $this->signer,
+          ]);
+          unset($_SESSION['msg']);
+          exit();
       }
-      // if not valid redirect login page
-    }
-
-    public function getLogout()
-    {
-        unset($_SESSION['user']);
-        session_destroy();
-        header("Location: /login");
-        exit();
-    }
+  }
+  public function getLogout()
+  {
+      unset($_SESSION['user']);
+      session_destroy();
+      header("Location: /login");
+      exit();
+  }
 }

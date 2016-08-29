@@ -26,10 +26,14 @@
     @include('errormessage')
         </div>
     </div>
-    @yield('content')
 
+    <div class="row">
+      <div class="col-md-12 push-down">
+        @yield('content')
+      </div>
+    </div>
 
-
+<footer class="footer">
     <div class="row footer-background">
         <div class="col-md-3">
             <div class="pagging-left-8px">
@@ -48,14 +52,20 @@
 
         </div>
     </div>
+</footer>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    @if ((Nrs\auth\LoggedIn::user()) && (Nrs\auth\LoggedIn::user()->access_level == 2))
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.10/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.js"></script>
+    @endif
 
     @yield('bottomjs')
+    @include('admin.admin-js')
 </body>
 
 </html>
