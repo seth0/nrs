@@ -3,12 +3,19 @@ namespace Nrs\controllers;
 
 use duncan3dc\Laravel\BladeInstance;
 use Nrs\models\Page;
+
 class PageController extends BaseController
 {
 
     public function getShowHomePage()
     {
         echo $this->Blade->render("home");
+    }
+
+    public function getShowProfilePage()
+    {
+    echo $this->Blade->render("profile");
+    
     }
 
     public function getShowPage()
@@ -38,9 +45,12 @@ class PageController extends BaseController
             'page_id' => $page_id,
         ]);
     }
+
     public function getShow404()
     {
         header("HTTP/1.0 404 Not Found");
         echo $this->Blade->render('page-not-found');
     }
+
+
 }
