@@ -10,7 +10,13 @@ $router->map('GET',       '/login',          'Nrs\controllers\AuthenticationCont
 $router->map('POST',      '/login',          'Nrs\controllers\AuthenticationController@postShowLoginPage',    'login_post');
 $router->map('GET',       '/logout',         'Nrs\controllers\AuthenticationController@getLogout',            'logout');
 
+// Testimonial
 
+// Logged in user ROUTES
+if (Nrs\auth\LoggedIn::user()) {
+$router->map('GET',       '/add-testimonial',       'Nrs\controllers\TestimonialController@getShowAdd',        'add_testimonial');
+$router->map('POST',      '/add-testimonial',       'Nrs\controllers\TestimonialController@postShowAdd',       'add_testimonial_post');
+}
 // PAGE ROUTES
 $router->map('GET',       '/',               'Nrs\controllers\PageController@getShowHomePage',                'home');
 $router->map('GET',       '/page-not-found', 'Nrs\controllers\PageController@getShow404',                     '404');
