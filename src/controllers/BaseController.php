@@ -8,14 +8,18 @@ it really does
 namespace Nrs\controllers;
 
 use duncan3dc\Laravel\BladeInstance;
+use Kunststube\CSRFP\SignatureGenerator;
 
 
 class BaseController
 {
     protected $Blade;
+    protected $signer;
 
     public function __construct()
     {
-      $this->Blade = new BladeInstance("/opt/lampp/htdocs/views", "/opt/lampp/htdocs/cache/views");
+
+      $this->signer = new SignatureGenerator(getenv('CSRF_SECRET'));
+      $this->Blade = new BladeInstance(getenv('VIEWS_DIRECTORY'), getenv('CACHE_DIRECTORY'));
     }
 }

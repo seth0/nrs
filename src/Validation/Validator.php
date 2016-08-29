@@ -31,6 +31,16 @@ class Validator
                 }
                 break;
 
+              case 'unique':
+
+              $model = "Nrs\\models\\" . $exploded[1];
+              $table = new $model;
+              $results = $table::where($name, '=', $_REQUEST[$name])->get();
+              foreach ($results as $item) {
+                $errors[] = $_REQUEST[$name] . "Already exists in this System!";
+              }
+              break;
+
                 default:
                     $errors[] = "No value found!";
             }
