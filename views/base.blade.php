@@ -27,30 +27,13 @@
         </div>
     </div>
 
-    <div class="row">
       <div class="col-md-12 push-down">
         @yield('content')
       </div>
-    </div>
 
 <footer class="footer">
-    <div class="row footer-background">
-        <div class="col-md-3">
-            <div class="pagging-left-8px">
-                <h4> Contact us </h4> 123 Main Street
-                <br> Unionvill, PA
-                <br> 23232
-                <br> +3161104404
-            </div>
-        </div>
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-3">
-            map
-        </div>
-        <div>
-
-        </div>
+    <div class="container">
+      <p class="muted credit">Ugly Little Footah<a href="http://playmaf.io">Tino Borst</a> and <a href="#">?? Who Knows</a>.</p>
     </div>
 </footer>
 
